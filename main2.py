@@ -41,7 +41,12 @@ def callback(frame):
 
     return av.VideoFrame.from_ndarray(img, format = "bgr24")
 
-webrtc_streamer(key = "example", video_frame_callback=callback)
+webrtc_streamer(key = "example", 
+                video_frame_callback=callback,
+               rtc_configuration={
+        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+        }
+     )
 
 
 # def main():
